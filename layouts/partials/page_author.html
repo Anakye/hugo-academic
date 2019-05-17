@@ -1,17 +1,19 @@
-{{ if not (or (eq .Site.Params.profile false) (eq .Params.profile false)) }}
+{{/* Author profile box */}}
+
+{{ if not (or (eq site.Params.profile false) (eq .Params.profile false)) }}
 
 {{/* Display superuser if superuser exists and page authors are not explicitly specified. */}}
 {{/* Otherwise, display first author if a profile for them exists. */}}
 
-{{ $author_urlize := "" }}
+{{ $author_urlized := "" }}
 {{ if and (not .Params.authors) (.Scratch.Get "superuser_username") }}
-  {{ $author_urlize = (.Scratch.Get "superuser_username") }}
+  {{ $author_urlized = (.Scratch.Get "superuser_username") }}
 {{ else }}
   {{ $first_author := "" }}
   {{ if .Params.authors }}
     {{ $first_author = index .Params.authors 0 }}
   {{ end }}
-  {{ $author_urlize = urlize $first_author }}
+  {{ $author_urlized = urlize $first_author }}
 {{ end }}
 
 {{ range $key, $value := $.Params.authors }}
@@ -30,7 +32,6 @@
 	  {{ $avatar_image := $avatar.Fill "250x250 Center" }}
 	  <img class="portrait mr-3" src="{{ $avatar_image.RelPermalink }}" itemprop="image" alt="Avatar">
 	  {{ end }}
-
 	  <div class="media-body">
 	    <h5 class="card-title" itemprop="name"><a href="{{ $link }}">{{ .Params.name }}</a></h5>
 	    {{ with .Params.role }}<h6 class="card-subtitle">{{.}}</h6>{{end}}
@@ -62,3 +63,4 @@
 	{{end}}
 	{{end}}
 {{ end }}
+
