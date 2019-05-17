@@ -32,7 +32,6 @@
 	  {{ $avatar_image := $avatar.Fill "250x250 Center" }}
 	  <img class="portrait mr-3" src="{{ $avatar_image.RelPermalink }}" itemprop="image" alt="Avatar">
 	  {{ end }}
-
 	  <div class="media-body">
 	    <h5 class="card-title" itemprop="name"><a href="{{ $link }}">{{ .Params.name }}</a></h5>
 	    {{ with .Params.role }}<h6 class="card-subtitle">{{.}}</h6>{{end}}
@@ -64,3 +63,4 @@
 	{{end}}
 	{{end}}
 {{ end }}
+
