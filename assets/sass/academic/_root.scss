@@ -135,9 +135,10 @@ figcaption {
   display: block;
   margin-top: 0.75em;
   line-height: 1.25;
-  font-size: 1rem;
+  font-size: 0.7rem;
   margin-bottom: 1.65rem;
   font-family: $sta-font-heading, sans-serif;
+  text-align: center;
 }
 
 figcaption.numbered:before {
